@@ -4,13 +4,16 @@ import processing.core.PApplet;
 
 public class Processing_main extends PApplet {
 
+    // ゲームクラスをインスタンス化
     private Game newGame;
 
+    // 使用する色を変数に格納
     private int black = color(0, 0, 0);
     private int white = color(255, 255, 255);
     private int red = color(255, 0, 0);
     private int gold = color(150, 150, 0);
 
+    // 使用する色を場面ごとの変数に格納
     private int backgroundColor = this.white;
     private int stringColor = this.black;
     private int btnBackgroundColor = this.black;
@@ -23,6 +26,7 @@ public class Processing_main extends PApplet {
     private int gameClearBackgroundColor = this.white;
     private int gameClearStringColor = this.gold;
 
+    // ミリ秒を1秒として扱える変数
     private int oneSecond = 1000;
 
     public void setup() {
