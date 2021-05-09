@@ -29,6 +29,9 @@ public class Processing_main extends PApplet {
     // ミリ秒を1秒として扱える変数
     private final int ONE_SECOND = 1000;
 
+    // フレームレート(1秒間の回数)
+    private final int FRAME_RATE = 60;
+
     public void setup() {
         // 描画領域
         
@@ -37,7 +40,7 @@ public class Processing_main extends PApplet {
         // noStroke()は移動
 
         // 一秒間のdraw()の描画回数
-        frameRate(60);
+        frameRate(FRAME_RATE);
 
         // second の加算は消去し初期値として代入
 
@@ -451,7 +454,7 @@ public class Processing_main extends PApplet {
 
             // 10秒たったらボールを追加する
             // if (this.difTime >= ONE_SECOND*10) {
-            if (frameCount % 600 == 0) { // !!!
+            if (frameCount % (FRAME_RATE*(ONE_SECOND*10)) == 0) { // !!!
                 this.ballcnt++;
                 //tenSecondElapsed++;
             }
@@ -485,7 +488,7 @@ public class Processing_main extends PApplet {
 
             // 10秒たったらボールを追加する
             // if (this.difTime >= ONE_SECOND*10) {
-            if (frameCount % 600 == 0) { // !!!
+            if (frameCount % (FRAME_RATE*(ONE_SECOND*10)) == 0) { // !!!
                 this.ballcnt++;
                 //tenSecondElapsed++;
             }
