@@ -8,26 +8,26 @@ public class Processing_main extends PApplet {
     private Game newGame;
 
     // 使用する色を変数に格納
-    private int black = color(0, 0, 0);
-    private int white = color(255, 255, 255);
-    private int red = color(255, 0, 0);
-    private int gold = color(150, 150, 0);
+    private final int BLACK = color(0, 0, 0);
+    private final int WHITE = color(255, 255, 255);
+    private final int RED = color(255, 0, 0);
+    private final int GOLD = color(150, 150, 0);
 
     // 使用する色を場面ごとの変数に格納
-    private int backgroundColor = this.white;
-    private int stringColor = this.black;
-    private int btnBackgroundColor = this.black;
-    private int btnStringColor = this.white;
-    private int readyStringColor = this.red;
-    private int pointerColor = this.black;
-    private int narrowFieldColor = this.black;
-    private int gameOverBackgroundColor = this.black;
-    private int gameOverStringColor = this.white;
-    private int gameClearBackgroundColor = this.white;
-    private int gameClearStringColor = this.gold;
+    private final int BASE_BG_COL = this.WHITE;
+    private final int BASE_STR_COL = this.BLACK;
+    private final int BTN_BG_COL = this.BLACK;
+    private final int BTN_STR_COL = this.WHITE;
+    private final int READY_STR_COL = this.RED;
+    private final int POINTER_BG_COL = this.BLACK;
+    private final int NARROW_BG_COL = this.BLACK;
+    private final int OVER_BG_COL = this.BLACK;
+    private final int OVER_STR_COL = this.WHITE;
+    private final int CLEAR_BG_COL = this.WHITE;
+    private final int CLEAR_STR_COL = this.GOLD;
 
     // ミリ秒を1秒として扱える変数
-    private int oneSecond = 1000;
+    private final int ONE_SECOND = 1000;
 
     public void setup() {
         // 描画領域
@@ -116,7 +116,7 @@ public class Processing_main extends PApplet {
         // private int i;
 
         // ボールの色(RGB)
-        private final int[] ballColors = {
+        private final int[] BALL_COLORS = {
             color(200, 100,  10),   // 茶色
             color( 10, 200, 100),   // エメラルド
             color( 10, 100, 200),   // 青
@@ -149,12 +149,12 @@ public class Processing_main extends PApplet {
 
         // 画面更新時に必ず背景を白色でリセットする
         public void init() {
-            background(255);
+            background(BASE_BG_COL);
 
             // 左上にデバッグ文字列を表示
             if (!this.isRelease) {
                 textSize(20);
-                fill(stringColor);
+                fill(BASE_STR_COL);
                 text("ballcnt: " + str(this.ballcnt), 100, 50);
                 text("scene: " + this.scene, 100, 100);
                 text("prevScene: " + this.prevScene, 100, 150);
@@ -194,19 +194,19 @@ public class Processing_main extends PApplet {
             // テキストを描画
             textSize(40);
             textAlign(CENTER, CENTER);
-            fill(stringColor);
+            fill(BASE_STR_COL);
             text("Loading...", width/2, height/16*13);
 
             // 長方形を描画
             noStroke();
             rectMode(CENTER);
-            fill(btnBackgroundColor);
+            fill(BTN_BG_COL);
             rect(width/2, height/8*7, width-50, 40);
-            // fill(banStringColor);
+            // fill(BTN_STR_COL);
             // rect(width/2, height/8*7, width-60, 30);
 
             // 経過時間が5秒を越したら画面遷移
-            if(this.difTime >= oneSecond * 5) {
+            if(this.difTime >= ONE_SECOND*5) {
                 this.prevScene = "start";
                 this.scene = "first";
             }
@@ -224,23 +224,23 @@ public class Processing_main extends PApplet {
             // タイトルの描画
             textSize(200);
             textAlign(CENTER, CENTER);
-            fill(stringColor);
+            fill(BASE_STR_COL);
             text("Game", width/2, height/3);
 
             // ボタンを描画
             noStroke();
             rectMode(CENTER);
-            fill(btnBackgroundColor);
+            fill(BTN_BG_COL);
             rect(width/4, height/3*2, 180, 80);
             rect(width/4*3, height/3*2, 180, 80);
 
             // ボタンに文字を描画
             textSize(40);
-            fill(btnStringColor);
+            fill(BTN_STR_COL);
             text("Standard", width/4*1, height/3*2);
-            fill(stringColor);
+            fill(BASE_STR_COL);
             text("<< Select Mode >>", width/4*2, height/3*2);
-            fill(btnStringColor);
+            fill(BTN_STR_COL);
             text("Advance", width/4*3, height/3*2);
 
             // マウスがクリックされたときに判定
@@ -267,7 +267,7 @@ public class Processing_main extends PApplet {
 
             // ボタンを3つ描画
             noStroke();
-            fill(btnBackgroundColor);
+            fill(BTN_BG_COL);
             rectMode(CENTER);
             rect(width/2, height/6*2, width/2, 100);
             rect(width/2, height/6*3, width/2, 100);
@@ -275,13 +275,13 @@ public class Processing_main extends PApplet {
 
             // ボタンに文字列を描画
             textSize(40);
-            fill(btnStringColor);
+            fill(BTN_STR_COL);
             text("1", width/2, height/6*2);
             text("Comming soon!", width/2, height/6*3);
             text("Comming soon!", width/2, height/6*4);
 
             // その他の文字列を描画
-            fill(stringColor);
+            fill(BASE_STR_COL);
             text("Standard Mode", width/2, height/6*1);
             text("--------------------", width/2, height/24*5);
             text("^^^ Choice Game Level ^^^", width/2, height/6*5);
@@ -318,7 +318,7 @@ public class Processing_main extends PApplet {
 
             // ボタンを3つ描画
             noStroke();
-            fill(btnBackgroundColor);
+            fill(BTN_BG_COL);
             rectMode(CENTER);
             rect(width/2, height/6*2, width/2, 100);
             rect(width/2, height/6*3, width/2, 100);
@@ -326,13 +326,13 @@ public class Processing_main extends PApplet {
 
             // ボタンに文字列を描画
             textSize(40);
-            fill(btnStringColor);
+            fill(BTN_STR_COL);
             text("1", width/2, height/6*2);
             text("Comming soon!", width/2, height/6*3);
             text("Comming soon!", width/2, height/6*4);
 
             // その他の文字列を描画
-            fill(stringColor);
+            fill(BASE_STR_COL);
             text("Advance Mode", width/2, height/6*1);
             text("--------------------", width/2, height/24*5);
             text("^^^ Choice Game Level ^^^", width/2, height/6*5);
@@ -367,10 +367,10 @@ public class Processing_main extends PApplet {
                 println("GET / 304  startGame_scene is true");
                 time = millis();
                 if(this.prevScene == "stLevel") {
-                this.prevScene = "true_st";
+                    this.prevScene = "true_st";
                 }
                 if(this.prevScene == "adLevel") {
-                this.prevScene = "true_ad";
+                    this.prevScene = "true_ad";
                 }
             }
             this.difTime = millis() - this.time;
@@ -382,14 +382,14 @@ public class Processing_main extends PApplet {
             drawMousePointer();
 
             // 5秒経過したらそれぞれのゲーム画面に遷移
-            if(this.difTime >= oneSecond * 5) {
+            if(this.difTime >= ONE_SECOND*5) {
                 if(this.prevScene == "true_st") {
-                this.scene = "standard";
-                this.prevScene = "startGame";
+                    this.scene = "standard";
+                    this.prevScene = "startGame";
                 }
                 if(this.prevScene == "true_ad") {
-                this.scene = "advance";
-                this.prevScene = "startGame";
+                    this.scene = "advance";
+                    this.prevScene = "startGame";
                 }
             }
         }
@@ -403,14 +403,13 @@ public class Processing_main extends PApplet {
         // カウントダウン画面の「Ready ? 」表示
         private void drawTitle() {
             // textAlign()を使用し、「Ready?」を中央に配置
-            // text("Ready?", 150, 300);
             // 実数を指定するのではなく相対的に値を指定する
-            fill(readyStringColor);
+            fill(READY_STR_COL);
             textSize(200);
             textAlign(CENTER,CENTER);
             text("Ready?", width/2, height/3);
-            if(this.difTime >= oneSecond * 3.5f) {
-                fill(stringColor);
+            if(this.difTime >= ONE_SECOND*4) {
+                fill(BASE_STR_COL);
                 text("Go!", width/2, height/3*2);
             }
         }
@@ -419,14 +418,13 @@ public class Processing_main extends PApplet {
         // private void countdown() {
         //     while (i > 0) {
         //         // textAlign()を使用し、「Ready?」を中央に配置
-        //         // text(cnt[j], 400, 600);
         //         // 実数を指定するのではなく相対的に値を指定する
-        //         fill(0);
+        //         fill(BASE_STR_COL);
         //         textSize(200);
         //         textAlign(CENTER,CENTER);
         //         text(i, width/2, height/3*2);
 
-        //         if(this.difTime >= oneSecond * 1) {
+        //         if(this.difTime >= ONE_SECOND*1) {
         //             i--;
         //         }
         //     }
@@ -434,7 +432,7 @@ public class Processing_main extends PApplet {
 
         // マウスポインタの黒い円
         private void drawMousePointer() {
-            fill(pointerColor);
+            fill(POINTER_BG_COL);
             ellipse(mouseX, mouseY, 50, 50);
         }
 
@@ -442,7 +440,7 @@ public class Processing_main extends PApplet {
         public void stGame_scene() {
             if(this.prevScene == "startGame") {
                 decideBallStandard();
-                this.ballcnt = 0;
+                this.ballcnt = 0;   // !!!
                 this.damagecnt = 0;
                 println("GET / 304  standard_scene is true");
                 this.time = millis();
@@ -452,7 +450,7 @@ public class Processing_main extends PApplet {
             // if 文は消去しnoloop()を実行する
 
             // 10秒たったらボールを追加する
-            // if (this.difTime >= oneSecond * 10) {
+            // if (this.difTime >= ONE_SECOND*10) {
             if (frameCount % 600 == 0) { // !!!
                 this.ballcnt++;
                 //tenSecondElapsed++;
@@ -473,7 +471,7 @@ public class Processing_main extends PApplet {
         public void adGame_scene() {
             if(this.prevScene == "startGame") {
                 decideBallStandard();
-                this.ballcnt = 0;
+                this.ballcnt = 0;   // !!!
                 this.damagecnt = 0;
                 println("GET / 304  advance_scene is true");
                 this.time = millis();
@@ -486,7 +484,7 @@ public class Processing_main extends PApplet {
             narrowScreen();
 
             // 10秒たったらボールを追加する
-            // if (this.difTime >= oneSecond * 10) {
+            // if (this.difTime >= ONE_SECOND*10) {
             if (frameCount % 600 == 0) { // !!!
                 this.ballcnt++;
                 //tenSecondElapsed++;
@@ -507,13 +505,13 @@ public class Processing_main extends PApplet {
         // ボールの直径、初期座標、進行速度を決める
         private void decideBallStandard() {
             for(int i = 0; i < ballDiameter.length; i++) {
-            this.ballDiameter[i] = PApplet.parseInt(random(100, 150));
-            // ballXs[ballcnt] = int(random(200, 201));
-            // ballYs[ballcnt] = int(random(200, 201));
-            this.ballXs[i] = 75;
-            this.ballYs[i] = 75;
-            this.stepXs[i] = PApplet.parseInt(random(6, 8));
-            this.stepYs[i] = PApplet.parseInt(random(3, 7));
+                this.ballDiameter[i] = PApplet.parseInt(random(100, 150));
+                // ballXs[ballcnt] = int(random(200, 201));
+                // ballYs[ballcnt] = int(random(200, 201));
+                this.ballXs[i] = 75;
+                this.ballYs[i] = 75;
+                this.stepXs[i] = PApplet.parseInt(random(6, 8));
+                this.stepYs[i] = PApplet.parseInt(random(3, 7));
             }
         }
 
@@ -545,7 +543,7 @@ public class Processing_main extends PApplet {
                 if(this.prevScene == "true_ad") this.prevScene = "advance";
                 this.scene = "over";
             }
-            if (this.difTime >= oneSecond * 120) {
+            if (this.difTime >= ONE_SECOND*120) {
                 //scene = "clear";
                 if(this.prevScene == "true_st") this.prevScene = "standard";
                 if(this.prevScene == "true_ad") this.prevScene = "advance";
@@ -573,12 +571,12 @@ public class Processing_main extends PApplet {
         // ボールの描画
         private void draw(int i) {
             noStroke();
-            fill(this.ballColors[i]);
+            fill(this.BALL_COLORS[i]);
             ellipse(this.ballXs[i], this.ballYs[i], this.ballDiameter[i], this.ballDiameter[i]);
         }
 
         private void narrowScreen() {
-            fill(narrowFieldColor);
+            fill(NARROW_BG_COL);
             rectMode(CORNERS);
             rect(0, 0, 80, height);              // 左
             rect(0, 0, width, 80);               // 上
@@ -612,15 +610,15 @@ public class Processing_main extends PApplet {
             this.difTime = millis() - this.time;
 
             // ダメージが3回( 20分の1秒間分 )入った場合はゲームオーバー
-            background(gameOverBackgroundColor);
-            fill(gameOverStringColor);
+            background(OVER_BG_COL);
+            fill(OVER_STR_COL);
             textSize(100);
             textAlign(LEFT);
             text("Game Over!", 10, 500);
             // noLoop() : draw()のループ処理を止める
             //noLoop();
 
-            if(this.difTime >= oneSecond * 10) {
+            if(this.difTime >= ONE_SECOND*10) {
                 this.prevScene = "over";
                 this.scene = "first";
             }
@@ -635,14 +633,14 @@ public class Processing_main extends PApplet {
             }
             this.difTime = millis() - this.time;
 
-            background(gameClearBackgroundColor);
-            fill(gameClearStringColor);
+            background(CLEAR_BG_COL);
+            fill(CLEAR_STR_COL);
             textSize(100);
             textAlign(LEFT);
             text("Game Clear!", 10, 500);
             //noLoop();
 
-            if(this.difTime >= oneSecond * 10) {
+            if(this.difTime >= ONE_SECOND*10) {
                 this.prevScene = "clear";
                 this.scene = "first";
             }
